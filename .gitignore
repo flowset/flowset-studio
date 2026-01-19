@@ -1,0 +1,11 @@
+### IntelliJ IDEA ###
+.idea/*
+!.idea/encodings.xml
+*.iws
+*.iml
+*.ipr
+out/
+/target/
+
+### VS Code ###
+.vscode/
