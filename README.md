@@ -2,9 +2,7 @@
 
 This repository is intended for collecting **community issues and feedback** for **Flowset Studio Community** — a free IntelliJ IDEA plugin and a set of tools for working with BPM engines.
 
-> **Flowset Studio Community is free of charge but closed-source.  
-> The product source code is **not published** in this repository.  
-> This repository is used exclusively for collecting community feedback.
+> The product source code is **not published** in this repository. This repository is used exclusively for collecting community feedback.
 
 ---
 
