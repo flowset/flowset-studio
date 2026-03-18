@@ -1,0 +1,30 @@
+name: Sync GitHub issue to GitFlic
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  sync-to-gitflic:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create issue in GitFlic
+        shell: bash
+        run: |
+          jq -n \
+            --arg title "${{ github.event.issue.title }}" \
+            --arg description "GitHub issue: ${{ github.event.issue.html_url }}" \
+            '{
+              title: $title,
+              description: $description,
+              status: {
+                id: "OPEN"
+              }
+            }' > payload.json
+
+          curl --fail-with-body --request POST \
+            --url "https://api.gitflic.ru/project/${{ vars.GITFLIC_OWNER_ALIAS }}/${{ vars.GITFLIC_PROJECT_ALIAS }}/issue" \
+            --header "Content-Type: application/json" \
+            --header "Authorization: token ${{ secrets.GITFLIC_TOKEN }}" \
+            --data @payload.json
